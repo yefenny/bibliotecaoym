@@ -1,0 +1,32 @@
+
+<select id="tipoes" class ="form-control " style = "width: 225px;"  onchange="estadistica(this)">
+  <option value="">Seleccionar</option>
+  <option value="semestre">Semestre</option>
+  <option value="mes">Mes</option>
+  <option value="area">Area de conocimiento</option>
+</select>
+<div id="seleccionafecha">
+</div>
+<%= select_month(Date.today,{use_month_names: %w(Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre)},:class => "form-control")	%>
+<input type="text" class='datepicker' >
+<%= submit_tag "Visualizar" , {class: "btn btn-primary", id: "botonv"}%>
+<script type="text/javascript">
+   
+		document.getElementById('botonv').style.display = "";	
+		function estadistica(valor)
+		{	
+				var tipo= valor.value;
+				if (tipo.value = "semestre" || tipo.value = "mes"){
+
+				}
+				else{
+
+				}
+		}
+
+	
+	</script>
+
+
+
+

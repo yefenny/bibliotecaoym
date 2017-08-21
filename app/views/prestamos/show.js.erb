@@ -1,0 +1,12 @@
+
+<% if @option == 'validar_estudiante' %>
+	<% if @estudiante != nil && @libro != nil%>
+		$(document.getElementById('datos_estudiante').innerHTML=" ");
+		$("<%= escape_javascript(render "datos_estudiante") %>").appendTo("#datos_estudiante");
+	<% else %>
+		alert("Estudiante no es valido");
+		$document.getElementById('elEstudiante').value = "";
+		$document.getElementById('elEstudiante').focus = true;
+
+	<%end%>
+<%end%>		

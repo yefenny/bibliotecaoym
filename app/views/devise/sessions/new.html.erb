@@ -1,0 +1,45 @@
+<div class="container">
+      <div class="row main">
+        <div class="main-login main-center">
+        <h4>Registro</h4>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+            
+            <div class="form-group">
+              <%= f.label :email, :class => "cols-sm-2 control-label" %>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                  <%= f.email_field :email, autofocus: true, :class => "form-control" %>
+                </div>
+              </div>
+             <div class="form-group">
+              <%= f.label :clave, :class => "cols-sm-2 control-label" %>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                  <%= f.password_field :password, autocomplete: "off", :class =>"form-control"  %>
+                </div>
+              </div>
+            </div> 
+            <div class="form-group">
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <% if devise_mapping.rememberable? -%>
+                          <%= f.check_box :remember_me %>
+                          <%= f.label :remember_me %>
+                      <% end -%>
+                </div>
+              </div>
+            </div> 
+
+            <div class="form-group ">
+            <%= f.submit "Iniciar Sesión " , class: "btn btn-primary btn-lg btn-block login-button" %>
+            </div>
+            <p class="link-to-text-color "><%= render "devise/shared/links" %></p>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+     

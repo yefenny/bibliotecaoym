@@ -1,0 +1,39 @@
+<div class="container">
+<h2><%= Prestamo %></h2>
+
+<div style = "font-size: 17px;">
+   <strong>Prestamo Id: </strong> <%= @prestamo.id %><br />
+   <strong>Nombre : </strong> <%= @prestamo.estudiante.name %><br />
+   <strong>Apellido : </strong> <%= @prestamo.estudiante.lastname %><br />
+   <strong>Matricula: </strong> <%= @prestamo.estudiante.matricula %><br />
+   <strong>Título: </strong> <%= @prestamo.libro.title %><br />
+   <strong>Autor:</strong>  <%= @prestamo.libro.author  %> </br>
+   <% if @prestamo.libro.edition != nil &&  @prestamo.libro.edition != "" %>
+	 <strong>Edición:</strong>  <%= @prestamo.libro.edition%> </br>
+   <%end%>
+   <strong>Fecha prestamo:</strong>  <%= @prestamo.fechap.strftime("%d/%m/%Y") %> </br>
+   <strong>Fecha de devolución esperada:</strong> <%= @prestamo.fechae.strftime("%d/%m/%Y")%> </br>
+   <% if @dias <0 %>
+     <strong>Mora:</strong> 150.00 </br>
+   <%else%>
+   	 <strong>Mora:</strong> 0.00 </br>
+   <%end%>  
+   <strong>Creado por:</strong> <%= @prestamo.created_by %> </br>
+   <button onclick="devolver(<%=@dias%>,<%= @prestamo.id %>)" class ="btn btn-primary"> Devolución </button></br>
+	<%= link_to 'Atrás', {:action => 'index'} %>
+</div>
+</div>
+<script type="text/javascript">
+	function devolver(dias,id){
+		dataString = 'option=devolucion'+'&dias='+dias+'&id='+id;
+		$.ajax(
+		{
+			type: "POST",
+			beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+			url: "/prestamos/devolucion",
+			data: dataString
+
+		});
+
+	}
+</script>

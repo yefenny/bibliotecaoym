@@ -1,0 +1,42 @@
+<div class="form-group">
+			<div class="col-md-5">
+			  	
+			</div>  	
+</div>
+<% fe = Time.now + 7.days %>
+<div class="navbar-form navbar-left" role="search" style="font-size: 17px;">
+				  <div class="form-group">
+				  	<h3>Datos prestamos</h3>
+				    <strong>Nombre:</strong>  <%= @estudiante.name %></br>
+				    <strong>Apellido:</strong>  <%= @estudiante.lastname %></br>
+				    <strong>Matricula:</strong>  <%= @estudiante.matricula %> </br>
+				    <strong>Título:</strong>  <%= @libro.title %> </br>
+				    <strong>Autor:</strong>  <%= @libro.author %> </br>
+				    <% if @libro.edition != nil &&  @libro.edition != "" %>
+				     <strong>Edición:</strong>  <%= @libro.edition%> </br>
+				    <%end%>
+				    <strong>Disponibilidad:</strong> <%= @libro.cantidadlibro.cantidad %> </br>
+				    <strong>Fecha prestamo:</strong>  <%= Time.now.strftime("%d/%m/%Y") %> </br>
+				    <strong>Fecha de devolución esperada:</strong> <%= fe.strftime("%d/%m/%Y")%> </br>
+				    <% if  @libro.cantidadlibro.cantidad != "" && @libro.cantidadlibro.cantidad != nil && @libro.cantidadlibro.cantidad > 0%>
+			  		<button onclick="enviarvalor(<%=@estudiante.id%>,<%=@libro.id%>)" class ="btn btn-primary">Crear</button>  
+					<%end%>  
+</div>		
+</div>	
+<script type="text/javascript">
+	function enviarvalor(estudiante,libro){
+		dataString = 'option=crear_prestamo'+'&estudiante_id='+estudiante +'&libro_id='+libro;
+		$.ajax(
+		{
+			type: "POST",
+			beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+			url: "/prestamos/create",
+			data: dataString
+
+		});
+
+	}
+</script>
+
+
+

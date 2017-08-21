@@ -1,0 +1,37 @@
+<div class="container">
+		<div class="page-header">
+		        <h1>Areas de conocimiento</h1>
+		 </div>
+		<% if @areasconocimientos.blank? %>
+			<p>No existe ninguna area de conocimiento en nuestro sistema.</p>
+			<p><%= link_to "Añadir nuevo ", {:action => 'new' }%></p>
+		<% else %>
+			<p>Estos son las areas de conocimiento que se encuentran en nuestro sistema.</p>
+		<div class="row">
+        <div class="col-md-6">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Areas de conocimiento </th> 
+                <th><%= link_to "Añadir", {:action => 'new'} %></th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @areasconocimientos.each do |c| %>
+            <% nombre = "#{c.name}"%>
+            <tr>
+	            
+		   		
+			    <td ><%= link_to nombre, {:action => 'show', :id => c.id} -%></td>
+			   	<td> <%= link_to 'Editar', {:action => "edit", :id => c.id} %></td>
+             </tr>  
+             <% end %>
+       
+            
+            </tbody>
+          </table>
+      
+		<% end %>
+	</div>	
+	</div>
+</div>	

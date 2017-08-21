@@ -1,0 +1,58 @@
+<div class="container">
+	<div class="form-horizontal">
+
+			<!-- Form Name -->
+		<legend ><h2 >Editar datos de <%=@usuario.name%> <%=@usuario.lastname%></h2></legend>
+	    <%=  form_for @usuario, :url =>{:action => "update", :id =>@usuario}  do |f| %>
+
+				     <% if @usuario.errors.any? %>
+					    <% @usuario.errors.full_messages.each do |message| %>
+					    	<%if message != "User has already been taken" %>
+					      		<div class="alert alert-danger" role="alert">
+				  					<li><%= message %></li>
+								</div>
+					      	<%end%>	
+					    <% end %>
+				  	 <% end %>
+				  	 <div class="form-group">
+								<div class="col-md-5">
+								  	<label for="name" >Email:</label>  
+								  	<%= f.email_field :email, autofocus: true, :class => "form-control" %>
+								</div>  	
+					 </div>
+					 <div class="form-group">
+								<div class="col-md-5">
+								  	<label for="name" >Nombre:</label>  
+								  	<%= f.text_field :name, :class => "form-control" %>
+								</div>  	
+					 </div>
+					 <div class="form-group">
+								<div class="col-md-5">
+								  	<label for="name" >Apellido:</label>  
+								  	<%= f.text_field :lastname, :class => "form-control" %>
+								</div>  	
+					 </div>
+					 <div class="form-group">
+						<div class="col-md-3">
+						  	<label for="rol" >Rol:</label>  
+						  	<% if current_user.rol_id == 1 %>
+						  		<%= f.collection_select :rol_id,Rol.where('id != 4').all, :id, :name, {prompt: "Seleccionar rol"}, {class: "form-control "} %>
+						  	<% elsif current_user.rol_id == 2 %>
+						  		<%= f.collection_select :rol_id, Rol.where('id != 1 and id != 4').all, :id, :name, {prompt: "Seleccionar rol"}, {class: "form-control "} %>
+						  		
+						  	<%end%>
+						  	<%= f.hidden_field :updated_by, :value => current_user.email %>
+						</div>  	
+					</div>
+					
+					 <div class="form-group" >
+								<div class="col-md-2">
+								  <%= f.submit "Crear" , class: "btn btn-primary" %>
+								</div>  	
+					 </div>
+
+			
+			<%= link_to 'Atrás', {:action => 'index'} %>	
+		<% end %>	
+	</div>
+</div>			

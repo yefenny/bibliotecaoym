@@ -1,0 +1,109 @@
+
+<div class="container">
+	<div class="form-horizontal">
+
+	<!-- Form Name -->
+		<legend ><h2>Agregar Libros</h2></legend>
+		<%= form_for @libro, :url =>{:action => "create", :id =>@libro} do |f| %>
+		<% if @libro.errors.any? %>
+			    <% @libro.errors.full_messages.each do |message| %>
+			    	<%if message != "User has already been taken" %>
+			      		<div class="alert alert-danger" role="alert">
+		  					<%= message %>
+						</div>
+			      	<%end%>	
+			    <% end %>
+		  	 <% end %>
+		<div class="form-group">
+			<div class="col-md-5">
+			  	<label for="title" >Título:</label>  
+			  	<%= f.text_field 'title', class: "form-control "  %>
+			</div>  	
+		</div>
+		<div class="form-group">
+			<div class="col-md-4">
+			  	<label for="author" >Autor:</label>  
+			  	<%= f.text_field 'author', class: "form-control" %>
+			</div>  	
+		</div>
+		<div class="form-group">
+			<div class="col-md-3">
+			  	<label for="edition" >Edición:</label>  
+			  	<%= f.text_field 'edition', class: "form-control" %>
+			</div>  	
+		</div>
+		<div class="form-group">
+			<div class="col-md-3">
+			  	<label for="casaeditora" >Casa editora:</label>  
+			  	<%= f.text_field 'casaeditora', class: "form-control " %>
+			</div>  	
+		</div>
+		<div class="form-group">
+			<div class="col-md-1">
+			  	<label for="publicationdate" >Fecha publicación:</label>  
+			  	<%= f.text_field 'publicationdate', class: "form-control" %>
+			</div>  	
+		</div>
+		<div class="form-group">
+			<div class="col-md-3">
+			  	<label for="asignatura" >Asignatura:</label>  
+			  	<%= f.collection_select :asignatura_id, Asignatura.all, :id, :name, {prompt: "Seleccionar asignatura"}, {class: "form-control "} %>
+			</div>  	
+		</div>
+		<div class="form-group">
+			<div class="col-md-6">
+			  	<label for="description" >Descripción:</label>  
+			  	<%= f.text_area 'description', class: "form-control myTextArea", size: "100x10" %>
+			</div>  	
+		</div>
+		<div class="form-group">
+			<div class="col-md-6">
+			  	<%= f.check_box 'fisico', { :id=> "cafisico", :onchange => "canfisico()"} %>
+			  	<label for="fisicoff" >Físico</label>  
+			</div>  	
+		</div>
+		<div class="form-group" id="c1">
+			<div class="col-md-2">
+			  	<label for="cantidad" >Cantidad:</label>  
+			  	 <%=text_field_tag :cantidad,nil, class:  "form-control" %>
+			</div>  	
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-6">
+			  	<label for="Subir" >Subir archivo:</label>  
+			  	<%= f.file_field :image, :class => "input-file" %> 
+			</div>  	 
+		</div>
+
+		<div class="form-group" >
+			<div class="col-md-2">
+			  <%= f.submit "Guardar" , class: "btn btn-primary" %>
+			</div>  	
+		</div>
+
+		<% end %>
+
+		<%= link_to 'Atras', {:action => 'index'} %>
+	</div>   
+</div>
+
+<script type="text/javascript">
+	document.getElementById('c1').style.display = "none";
+	
+		function canfisico(){
+
+		if (document.getElementById('cafisico').checked==true)
+		{
+			document.getElementById('c1').style.display = "block";
+			document.getElementById('cafisico').value = 1
+		}
+		else
+		{
+			document.getElementById('c1').style.display = "none";
+			document.getElementById('cafisico').value = 0
+		}
+		}		
+	
+
+</script>     

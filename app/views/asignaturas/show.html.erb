@@ -1,0 +1,12 @@
+<div class="container">
+	<div class="form-horizontal">
+
+		<h2><%= @asignatura.name %> </h2>
+		<div style = "font-size: 17px;">
+		   <strong>ID: </strong> <%= @asignatura.id %><br />
+		   <strong>Nombre: </strong> <%= @asignatura.name %><br />
+		   <strong>Area de conocimiento: </strong> <%= @asignatura.areasconocimiento.name %><br />
+		   <%= link_to 'Atrás', {:action => 'list'} %>
+		</div>
+	</div>
+</div>	

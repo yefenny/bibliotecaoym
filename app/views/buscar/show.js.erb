@@ -1,0 +1,13 @@
+<% if @controller == "libros" %>
+	$(document.getElementById('listalibros').innerHTML ='');
+	$("<%= escape_javascript(render "/libros/listadolibros") %>").appendTo("#listalibros");
+<% elsif @controller == "estudiantes" %>
+	$(document.getElementById('listaestudiantes').innerHTML ='');
+	$("<%= escape_javascript(render "/estudiantes/listadoestudiantes") %>").appendTo("#listaestudiantes");
+<% elsif @controller == "prestamos" && params[:option]=="libros" %>
+	$(document.getElementById('listadolibros').innerHTML ='');
+	$("<%= escape_javascript(render "/prestamos/listalibros") %>").appendTo("#listadolibros");	
+<% elsif @controller == "usuarios" %>
+	$(document.getElementById('listausuarios').innerHTML ='');
+	$("<%= escape_javascript(render "/usuarios/listadousuarios") %>").appendTo("#listausuarios");		
+<%end%>

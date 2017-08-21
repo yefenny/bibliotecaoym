@@ -1,0 +1,48 @@
+<div class="container">
+<h2><%= @libro.title %></h2>
+
+<div style = "font-size: 17px;">
+  <% if @libro.author != nil && @libro.author != ''%>
+     <strong>Autor: </strong> <%= @libro.author %><br />
+  <%end%> 
+
+  <% if @libro.edition != nil && @libro.edition != ''%> 
+     <strong>Edición: </strong> <%= @libro.edition %><br />
+  <%end%>   
+
+  <% if @libro.publicationdate != nil && @libro.publicationdate != ''%>   
+     <strong>Fecha publicación: </strong> <%= @libro.publicationdate %><br />
+  <%end%> 
+
+  <% if @libro.casaeditora != nil && @libro.casaeditora != ''%>    
+     <strong>Casa editora: </strong> <%= @libro.casaeditora %><br />
+  <%end%>
+   <strong>Asignatura: </strong> <%= @libro.nombre_asignatura %><br />
+   <strong>Area de conocimiento: </strong> <%= @libro.nombre_area %><br />
+     <strong>Disponibilidad: </strong>
+     <% if @libro.fisico == true && @libro.digital == true%>
+     		Físico/ Digital</br> 
+     <%end%>
+     <% if @libro.fisico == true && @libro.digital != true%>
+     		Físico</br> 
+     <%end%>
+     <% if @libro.fisico != true && @libro.digital != true%>
+     		No disponible</br> 
+     <%end%>
+     <% if @libro.fisico != true && @libro.digital == true%>
+     		Digital</br> 
+     <%end%>
+     
+  <% if @libro.description != nil && @libro.description != ''%>     
+      <strong>Descripción : </strong> <%= @libro.description %><br />
+  <%end%>    
+    <% if current_user.rol_id != 5 && @libro.digital == true%>
+
+  	<a href="#" target="_blank"><%=  link_to 'Abrir', {:controller => 'libros', :action => 'pdf', :id => @libro.id },  target: :_blank %></a> 
+    <% end %>	
+
+<hr />
+</div>
+
+<%= link_to 'Atras', {:action => 'index'} %>
+</div>

@@ -1,0 +1,59 @@
+<% if controller_name == "libros" %>
+	<fieldset id="group1">
+        <input type="radio" value="nombre" name="group1" checked="true"><label>Nombre</label> 
+        <input type="radio" value="area" name="group1"><label>Area de Conocimiento</label> 
+        <input type="radio" value="asignatura" name="group1"><label>Asignatura</label> 
+    </fieldset>
+<%end%>   
+<% if controller_name == "estudiantes" %>
+	<fieldset id="group1">
+        <input type="radio" value="nombre" name="group1" checked="true"><label>Nombre</label> 
+        <input type="radio" value="matricula" name="group1"><label>Matrícula</label> 
+    </fieldset>
+<%end%>  
+<% if controller_name == "usuarios" %>
+	<fieldset id="group1">
+        <input type="radio" value="email" name="group1" checked="true"><label>Email</label> 
+        <input type="radio" value="nombre" name="group1"><label>Nombre</label> 
+    </fieldset>
+<%end%> 
+<% if controller_name == "prestamos" %>
+		<fieldset id="group1">
+	        <input type="radio" value="nombre" name="group1" checked="true"><label>Nombre</label>
+	        <% if @option == "todos" %>
+	         <input type="radio" value="fecha" name="group1" ><label>Fecha</label>
+	        <%end%>
+	    </fieldset>
+<%end%> 
+  
+	<div >
+		<%= text_field_tag 'valorconsulta', '', {:class => "form-control ", :style=> "width: 200px", :onkeypress  => "buscar(this,event)"} %>
+	</div>	
+
+
+	<script type="text/javascript">
+		function buscar(valor,e)
+		{
+			if(e.keyCode === 13){
+				var controller = '<%= controller_name %>';
+				var buscar_por; 
+				var buscar_texto = valor.value;
+				var arrRadio= document.getElementsByName("group1");
+				var i;
+				for (i = 0; i < arrRadio.length; i++) {
+				    if (arrRadio[i].checked == true) {
+				        buscar_por = arrRadio[i].value;
+				        break;
+				    }
+				}
+				 dataString = 'el_controller='+controller+'&buscar_por='+buscar_por+'&buscar_texto='+buscar_texto
+	  					  $.ajax({  
+	                         type: "GET",  
+							 url: "/buscar/show",
+	                         data: dataString  
+	                        }); 
+	  		}			  
+	  
+
+		}
+	</script>

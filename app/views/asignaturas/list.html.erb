@@ -1,0 +1,38 @@
+<div class="container">
+		<div class="page-header">
+		        <h1>Asignaturas</h1>
+		 </div>
+		<% if @asignaturas.blank? %>
+			<h5>No existe ninguna asignatura en nuestro sistema.</h5>
+			<p><%= link_to "Añadir nuevo ", {:action => 'new' }%></p>
+		<% else %>
+			<p>Estas son las asignaturas que se encuentran en nuestro sistema.</p>
+		<div class="row">
+        <div class="col-md-6">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Asignaturas </th> 
+                 <th><%= link_to "Añadir", {:action => 'new'} %></th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @asignaturas.each do |c| %>
+            <% nombre = "#{c.name}"%>
+            <tr>
+	            
+		   		
+			    <td ><%= link_to nombre, {:action => 'show', :id => c.id} -%></td>
+			   	<td> <%= link_to 'Editar', {:action => "edit", :id => c.id} %></td>
+             </tr>  
+             <% end %>
+       
+            
+            </tbody>
+          </table>
+      
+		<% end %>
+	</div>	
+	</div>
+</div>	
+

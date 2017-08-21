@@ -1,0 +1,61 @@
+<%= javascript_include_tag "jquery.min", "data-turbolinks-track" => "reload" %>
+<%= javascript_include_tag "bootstrap.min", "data-turbolinks-track" => "reload" %>
+<%= stylesheet_link_tag "bootstrap.min" %>
+<%= stylesheet_link_tag "navbarchild" %>
+<nav class="navbar navbar-inverse" id = "headerMenu">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Biblioteca NYN</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="/principal/inicio">Inicio</a></li>
+            <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Libros <b class="caret"></b></a>
+                <ul class="dropdown-menu multi-level">
+                    <li><a href="/libros/index">Digitales/Físicos</a></li>
+					<li><a href="/controller_name">Catálago</a></li>
+				</ul>
+            </li>				
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Mantenimientos <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/areasconocimientos/index">Areas de conocimiento </a></li>
+					<li><a href="/asignaturas/list">Asignaturas </a></li>
+					<li><a href="/rols/list">Roles </a></li>
+					<li><a href="/estudiantes/index">Estudiantes </a></li>
+					<li><a href="/usuarios/index">Usuarios </a></li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Option 3 <span class="caret"></span></a>
+				<ul class="dropdown-menu">	
+					<li><a href="/controller_name">Option 3-A</a></li>	                
+					<li class="dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Option 3-B</a>
+                        <ul class="dropdown-menu">
+							<li><a href="/controller_name">Option 3-B (1)</a></li>
+							<li><a href="/controller_name">Option 3-B (2)</a></li>
+							<li><a href="/controller_name">Option 3-B (3)</a></li>
+							<li><a href="/controller_name">Option 3-B (4)</a></li>
+						</ul>
+					</li>	
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sesión<span class="caret"></span></a>
+				<ul class="dropdown-menu">	
+					<li><%= render 'menu/login_items'%></li>	                
+					<li class="dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Option 3-B</a>
+                        <ul class="dropdown-menu">
+							<li><a href="/controller_name">Option 3-B (1)</a></li>
+							<li><a href="/controller_name">Option 3-B (2)</a></li>
+							<li><a href="/controller_name">Option 3-B (3)</a></li>
+							<li><a href="/controller_name">Option 3-B (4)</a></li>
+						</ul>
+					</li>	
+				</ul>
+			</li>
+		</ul>
+	</div>
+</nav>

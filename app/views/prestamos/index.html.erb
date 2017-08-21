@@ -1,0 +1,16 @@
+<div class="container">
+<div class="page-header">
+        <h1>Prestamos</h1>
+ </div>
+
+<% if @prestamos.blank? %>
+	<p>No existe ningún prestamos en nuestro sistema.</p>
+  <%= link_to "Añadir nuevo", {:action => 'new' }%>
+<% else %>
+	<p>Estos son los prestamos que se encuentran en nuestro sistema.</p>
+	<div id="listadoprestamos">
+	   <%= render 'listadoprestamos'%>
+  </div>
+<% end %>
+</div>
+</div>

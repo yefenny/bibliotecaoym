@@ -1,0 +1,18 @@
+<div class="container">
+<h2><%= @usuario.name %> <%=@usuario.lastname%></h2>
+
+<div style = "font-size: 17px;">
+   <strong>Usuario Id: </strong> <%= @usuario.id %><br />
+   <strong>Nombre : </strong> <%= @usuario.name %><br />
+   <strong>Apellido : </strong> <%= @usuario.lastname %><br/>
+   <strong>Email: </strong> <%= @usuario.email %><br />
+   <strong>Rol: </strong> <%= @usuario.rol.name %><br />
+   <% if @usuario.created_by != nil &&  @usuario.created_by != "" %>
+	 <strong>Creado por:</strong>  <%= @usuario.created_by %> <br/>
+   <%end%>
+   <% if @usuario.updated_by != nil &&  @usuario.updated_by != "" %>
+	 <strong>Actualizado por:</strong>  <%= @usuario.updated_by %> <br/>
+   <%end%>
+	<%= link_to 'Atrás', {:action => 'index'} %>
+</div>
+</div>

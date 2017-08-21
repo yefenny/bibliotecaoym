@@ -1,0 +1,9 @@
+<div class="container">
+	<h1>Estadística de libros prestados</h1>
+	<p >Porcentaje de libros que estan en circulación :</p>
+	<div>
+	 <% hashBook = @book.map { |book| [book.nombre_libro, book.porcentaje_prestado]} %>
+	 <%= column_chart(hashBook) %> 
+	</div>
+	
+</div>	

@@ -1,0 +1,81 @@
+ <div class="navbar-form navbar-left" role="search" >
+				  <div class="form-group">
+				    <select id="tipoes" class ="form-control " style = "width: 225px; padding-left: 0px;"  onchange="estadistica(this)">
+					  <option value="">Seleccionar</option>
+					  <option value="semestre">Semestre</option>
+					  <option value="mes">Mes</option>
+					  <option value="area">Area de conocimiento</option>
+					</select>	</br>
+ 				 </div>  
+		 
+ </div>
+ 
+ <div class="navbar-form navbar-left" role="search" id= "seleccionarf">
+				  <div class="form-group">
+				  <%= select_month(Date.today, {use_month_names: %w(Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre)},{:class => "form-control", :style => "width: 130px;", :id =>"vmes"})%>
+				  <%= select_year(Date.today, {start_year: 2007, end_year: Date.current.year},{:class => "form-control", :style => "width: 130px;", :id =>"date_year"})%>
+
+ 				 </div>  
+		 
+ </div>
+ <div class="navbar-form navbar-left" role="search">
+				  <div class="form-group">
+				  <button onclick="mostrar()" class ="btn btn-primary" id="botonv">Visualizar</button>
+				  <p></p></br>
+				  </div>  		
+ </div>
+ <div id="estadistica_contenedor" class="contiene_estadistica">
+ 	
+ </div>
+  
+<script type="text/javascript">
+   
+		document.getElementById('seleccionarf').style.display = "none";
+		document.getElementById('botonv').style.display = "none";	
+		function estadistica(valor)
+		{	
+				var tipo= valor.value;
+				var valor = 0;
+				if (tipo == "semestre" || tipo == "mes" && valor==0)
+				{
+					valor = 1 ;
+					document.getElementById('seleccionarf').style.display = "block";
+					document.getElementById('botonv').style.display = "block";	
+				}	
+				else if (tipo == "area"){
+					valor = 0;
+					document.getElementById('seleccionarf').style.display = "none";
+					document.getElementById('botonv').style.display = "block";	
+				}
+				else{
+					document.getElementById('seleccionarf').style.display = "none";
+					document.getElementById('botonv').style.display = "none";	
+					valor = 0;
+
+				}		
+		}
+		function mostrar(){
+			var e = document.getElementById("vmes");
+			var mes = e.options[e.selectedIndex].value;
+			var e = document.getElementById("date_year");
+			var year = e.options[e.selectedIndex].value;
+    		if (mes.length < 2) { mes = '0' + mes; }
+			var fecha = year + "/"+mes;
+			var tipo = document.getElementById("tipoes").value;
+			dataString = 'tipo='+tipo+'&fecha='+fecha;
+					$.ajax(
+					{
+						type: "GET",
+						beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+						url: "/estadisticas/show",
+						data: dataString
+
+					});
+		}
+
+	
+	</script>
+
+
+
+

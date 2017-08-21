@@ -1,0 +1,16 @@
+<div class="container">
+<h2><%= @estudiante.name %> <%= @estudiante.lastname %></h2>
+
+<div style = "font-size: 17px;">
+   <strong>Matricula: </strong> <%= @estudiante.matricula %><br />
+   <strong>Clave estudiantil: </strong> <%= @estudiante.clave %><br />
+   <% if @estudiante.user_id != 0 && @estudiante.user_id != nil  %>
+
+   	<strong>Usuario: </strong> <%= @estudiante.user.email %><br />
+
+   <%end%>
+   <strong>Creado:</strong> <%= @estudiante.created_at %><br />
+   <%= link_to 'Back', {:action => 'index'} %>
+</div>
+</div>
+

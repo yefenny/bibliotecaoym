@@ -1,0 +1,62 @@
+<div class="container">
+	<div class="form-horizontal">
+
+			<h3>Validación estudiantil</h3>
+			<div class="field">
+				<h4> ¿Es usted un estudiante? </h4>
+				<%= form_tag "/validatestudents", :action=> "create" do %>
+					<div class="form-group">
+						<div class="col-md-6">
+						  	<%=check_box_tag "echeck",0, false,{ :id=> "estudiantet", :onchange => "esestudiante()"}%>
+						  	<label for="fisicoff" >Soy un estudiante</label>  
+						</div>  	
+					</div>
+					<div class="form-group" id="ve1">
+						<div class="col-md-4">
+						  	 <%= label_tag :Matricula %><br />
+						    <%= text_field_tag :matricula, "", class: 'form-control' %>
+						</div>  	
+					</div>
+					<div class="form-group" id="ve2">
+						<div class="col-md-4">
+						  	 <%= label_tag :Clave %><br />
+						    <%= password_field_tag :clave,  autocomplete: "off", class: 'form-control'%>
+						</div>  	
+					</div>
+					<div class="form-group" id="ve3">
+						<div class="col-md-2">
+						  <%= submit_tag "Guardar", class: "btn btn-primary"  %>
+						</div>  	
+					</div>
+
+				<% end %>
+
+				<%= link_to 'Continuar como no estudiante', root_path%>
+			</div>
+	</div>
+</div>	
+			
+
+<script type="text/javascript">
+	document.getElementById('ve1').style.display = "none";
+	document.getElementById('ve2').style.display = "none";
+	document.getElementById('ve3').style.display = "none";
+	function esestudiante(){
+
+		if (document.getElementById('estudiantet').checked==true)
+		{
+			document.getElementById('ve1').style.display = "block";
+			document.getElementById('ve2').style.display = "block";
+			document.getElementById('ve3').style.display = "block";
+			document.getElementById('estudiantet').value = 1;
+		}
+		else
+		{
+			document.getElementById('ve1').style.display = "none";
+			document.getElementById('ve2').style.display = "none";
+			document.getElementById('ve3').style.display = "none";
+			document.getElementById('estudiantet').value = 0;
+		}	
+	}
+
+</script>

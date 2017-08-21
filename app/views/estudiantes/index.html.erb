@@ -1,0 +1,20 @@
+<div class="container">
+		<div class="page-header">
+		        <h1>Estudiantes</h1>
+		 </div>
+		<% if @estudiantes.blank? %>
+			<p>No existe ningún estudiante en nuestro sistema.</p>
+			<p><%= link_to "Añadir nuevo ", {:action => 'new' }%></p>
+		<% else %>
+			<p>Estos son los estudiantes que se encuentran en nuestro sistema.</p>
+    	<div>
+         <%= render "buscar" %> 
+      </div>
+      <div id="listaestudiantes">
+         <%= render 'listadoestudiantes'%>
+      </div>
+      
+		<% end %>
+	</div>	
+	</div>
+</div>	

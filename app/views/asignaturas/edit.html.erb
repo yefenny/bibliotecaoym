@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="form-horizontal">
+		<legend ><h2>Editar detalles de Asignatura</h2></legend>
+	    <%=  form_for @asignatura, :url =>{:action => "update", :id =>@asignatura}  do |f|  %>
+
+		     <% if @asignatura.errors.any? %>
+			    <% @asignatura.errors.full_messages.each do |message| %>
+			    	<%if message != "User has already been taken" %>
+			      		<div class="alert alert-danger" role="alert">
+		  					<%= message %>
+						</div>
+			      	<%end%>	
+			    <% end %>
+		  	 <% end %>
+		  	 <div class="form-group">
+					<div class="col-md-5">
+					  	<strong>ID: </strong> <%= @asignatura.id %><br />
+					</div>  	
+			  </div>
+		  	  <div class="form-group">
+					<div class="col-md-5">
+					  	<label for="name" >Nombre:</label>  
+					  	<%= f.text_field :name , :class => "form-control "  %>
+					</div>  	
+			  </div>
+			  <div class="form-group">
+					<div class="col-md-3">
+					  	<label for="areasconocimiento_id" >Area de conocimineto:</label>  
+					  	<%= f.collection_select(:areasconocimiento_id, @areasconocimiento, :id, :name,{:prompt => "Seleccionar area de conocimiento"}, {:class => "form-control "} ) %>
+					</div>  	
+			  </div>			 
+			 <div class="form-group" >
+					<div class="col-md-2">
+					  <%= f.submit "Guardar cambios" , class: "btn btn-primary" %>
+					</div>  	
+			 </div>
+
+				<% end %>
+				<%= link_to 'Atrás', {:action => 'list'} %>
+
+	</div>
+</div>	

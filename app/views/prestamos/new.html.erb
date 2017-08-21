@@ -1,0 +1,84 @@
+<div class="container">	
+	<div class="form-horizontal" style="font-size: 17px">
+
+		<!-- Form Name -->
+		<legend ><h2>Nuevo prestamo</h2></legend>
+		<%= form_for @prestamo, :url =>{:action => "create", :id =>@prestamo} do |f| %>
+		     <% if @prestamo.errors.any? %>
+			    <% @prestamo.errors.full_messages.each do |message| %>
+			    	<%if message != "User has already been taken" %>
+			      		<div class="alert alert-danger" role="alert">
+		  					<%= message %>
+						</div>
+			      	<%end%>	
+			    <% end %>
+		  	 <% end %>
+		  	  <div class="navbar-form navbar-left" role="search">
+				  <div class="form-group">
+				    <label for="name" >Libro ID:</label>  
+					 <%= text_field_tag :libro_id,'',:id=>"elLibro", :class => "form-control", :style=> "width: 75px;"  %>
+					 <%= image_tag 'SearchIcon2.png', height: 27, width: 27, class: "aumentar", onclick: "buscaLibros()" %>
+				  </div>  		
+			</div>
+		  	 <div class="navbar-form navbar-left" role="search">
+				  <div class="form-group">
+				    <label for="name" >Matricula:</label>  
+					 <%= text_field_tag :matricula,'',:id=>"elEstudiante", :class => "form-control ", :style=> "width: 150px;" %>
+					 <button onclick="validaEstudiante()" class ="btn btn-primary">Validar</button>
+				  </div>  		
+			</div>
+				  					
+
+		 <% end %>
+		 <div id="datos_estudiante"></div>
+		 <div id="datos_libro"></div>
+		 <div id="myDialog"></div>
+	</div>
+ </div>	
+
+
+
+<script>
+	function validaEstudiante(){
+		var estudiante = document.getElementById('elEstudiante').value;
+		var libro = document.getElementById('elLibro').value;
+		dataString = 'option=validar_estudiante'+'&matricula='+document.getElementById('elEstudiante').value +'&libro='+document.getElementById('elLibro').value ;
+		$.ajax(
+		{
+			type: "GET",
+			url: "/prestamos/show",
+			data: dataString
+
+		});
+
+	}
+	function buscaLibros(){
+		
+		$("<%= escape_javascript(render 'libros')%>").appendTo( "#myDialog" );
+		$( "#myDialog" ).dialog({
+							modal: true,
+							height: 470,
+							width: 570,
+							buttons: {
+								Cancel: function() {
+								$( this ).dialog( "close" );
+								}
+					    }});
+	$( "#myDialog" ).position({
+		my: "center",
+		at: "center",
+		of: window
+	});
+	dataString = 'option=libros' ;
+		$.ajax(
+		{
+			type: "GET",
+			url: "/buscar/show",
+			data: dataString
+
+		});
+
+
+
+	}
+</script>

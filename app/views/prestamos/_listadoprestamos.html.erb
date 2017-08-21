@@ -1,0 +1,30 @@
+ 
+<div class="row" >
+        <div >
+          <table class="table" style="width: 100%;">
+            <thead>
+              <tr>
+                <th style="width: 10%;">Prestamo ID</th>
+                <th style="width: 15%;">Fecha prestamo</th>
+                <th style="width: 15%;">Matricula</th>
+                <th style="width: 20%;">Nombre estudiante </th> 
+                <th style="width: 30%;">Título libro</th>
+                <th style="width: 10%;"><span class=""><%= link_to "Añadir", {:controller => 'prestamos', :action => 'new'} %></span> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @prestamos.each do |c| %>
+            <tr>
+	            
+  			    <td ><%= link_to c.id, {:controller => 'prestamos',:action => 'show', :id => c.id} -%></td>
+            <td ><%= c.fechap %> </td>
+            <td><%= c.matricula_estudiante %> </td>
+            <td><%= c.nombre_estudiante %> </td>
+            <td><%= c.title_libro%> </td>
+             </tr>  
+             <% end %>
+       
+            
+            </tbody>
+          </table>
+</div>
