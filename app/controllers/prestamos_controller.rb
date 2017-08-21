@@ -85,7 +85,7 @@ before_action :authenticate_user!
           #@prestamo.received_by = current_user.email
           res = ActiveRecord::Base.connection.execute("update prestamos set fechad='#{Time.now}', received_by = '#{current_user.email}' where id = #{params[:id]}")
            if params[:dias].to_i < 0
-             res = ActiveRecord::Base.connection.execute("update prestamos set mora_id=1 where id = #{params[:id]}")
+             res = ActiveRecord::Base.connection.execute("update prestamos set mora_id=5 where id = #{params[:id]}")
            end
            #if @prestamo.save
             @libro.save

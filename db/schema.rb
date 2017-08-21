@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814172613) do
+ActiveRecord::Schema.define(version: 20170821201521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170814172613) do
     t.integer "libro_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "cantidad_total"
   end
 
   create_table "estudiantes", force: :cascade do |t|
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(version: 20170814172613) do
     t.integer "libro_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "fecha_descarga"
   end
 
   create_table "libros", force: :cascade do |t|
@@ -86,16 +88,23 @@ ActiveRecord::Schema.define(version: 20170814172613) do
     t.datetime "image_updated_at"
   end
 
+  create_table "moras", force: :cascade do |t|
+    t.string "valor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "prestamos", force: :cascade do |t|
     t.bigint "estudiante_id", null: false
     t.bigint "libro_id", null: false
     t.date "fechap", null: false
     t.date "fechae", null: false
-    t.date "fechad", null: false
+    t.date "fechad"
     t.integer "mora_id"
     t.string "created_by", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "received_by"
   end
 
   create_table "rols", force: :cascade do |t|
@@ -126,6 +135,8 @@ ActiveRecord::Schema.define(version: 20170814172613) do
     t.datetime "updated_at", null: false
     t.integer "rol_id", default: 5, null: false
     t.integer "estudiante_id"
+    t.string "created_by"
+    t.string "updated_by"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["estudiante_id"], name: "users_estudiante_id_key", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

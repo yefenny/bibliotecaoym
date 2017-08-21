@@ -13,11 +13,7 @@
    <%end%>
    <strong>Fecha prestamo:</strong>  <%= @prestamo.fechap.strftime("%d/%m/%Y") %> </br>
    <strong>Fecha de devolución esperada:</strong> <%= @prestamo.fechae.strftime("%d/%m/%Y")%> </br>
-   <% if @dias <0 %>
-     <strong>Mora:</strong> 150.00 </br>
-   <%else%>
-   	 <strong>Mora:</strong> 0.00 </br>
-   <%end%>  
+     <strong>Mora:</strong> <%=@prestamo.mora.valor %> </br> 
    <strong>Creado por:</strong> <%= @prestamo.created_by %> </br>
    <button onclick="devolver(<%=@dias%>,<%= @prestamo.id %>)" class ="btn btn-primary"> Devolución </button></br>
 	<%= link_to 'Atrás', {:action => 'index'} %>

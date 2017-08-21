@@ -2,6 +2,8 @@ Rails.application.routes.draw do
  
 
   
+  get 'repprestamos/index'
+
   get 'estadisticaprestamos/index'
 
   get 'estadisticaprestamos/show'

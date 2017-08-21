@@ -1,6 +1,7 @@
 class Prestamo < ApplicationRecord
 	belongs_to :libro
 	belongs_to :estudiante
+  belongs_to :mora
 	 def nombre_estudiante
     	estudiante = Estudiante.find(self.estudiante_id)
     	nombre_estudiante = estudiante.name
