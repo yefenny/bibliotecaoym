@@ -11,12 +11,12 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require twitter/bootstrap
 //= require moment
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require twitter/bootstrap
 //= require bootstrap-datepicker
 //= require_tree .
 
