@@ -7,6 +7,7 @@
    <% if @estudiante.user_id != 0 && @estudiante.user_id != nil  %>
 
    	<strong>Usuario: </strong> <%= @estudiante.user.email %><br />
+   	<strong>Usuario ID: </strong> <%= @estudiante.user_id %><br />
 
    <%end%>
    <strong>Creado:</strong> <%= @estudiante.created_at %><br />
