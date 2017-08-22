@@ -41,7 +41,7 @@
 <%end%> 
   
 	<div >	
-		<% if controller_name != "repprestamos" && @buscarl != "buscarp"  %>
+		<% if controller_name != "repprestamos" && @pre != "p"  %>
 		 <%= text_field_tag 'valorconsulta', '', {:class => "form-control ", :style=> "width: 200px", :onkeypress  => "buscar(this,event)"} %>
 		<%end%> 
 
