@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails_12factor', group: :production
 gem 'momentjs-rails'
 gem "twitter-bootstrap-rails"
 gem 'jquery-ui-rails'
@@ -54,6 +53,9 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+end
+group :production do
+  gem 'rails_12factor'
 end
 
 group :development do
