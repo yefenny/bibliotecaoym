@@ -8,7 +8,7 @@
                 <th style="width: 25%;">Asignatura</th>
                 <th style="width: 25%;">Area de conocimiento</th>
                 <th style="width: 10%;"></th>
-                 <% if current_user.rol_id == 1 current_user.rol_id == 2 %>
+                 <% if current_user.rol_id == 1 || current_user.rol_id == 2 %>
                   <th style="width: 15%;"><span class=""><%= link_to "Añadir", {:controller => 'libros', :action => 'new'} %></span> </th>
                  <%end%> 
               </tr>
@@ -26,7 +26,7 @@
   			    <td ><%= link_to nombre, {:controller => 'libros',:action => 'show', :id => id} -%></td>
             <td ><%= c.nombre_asignatura %> </td>
             <td><%= c.nombre_area %> </td>
-            <% if current_user.rol_id == 1 current_user.rol_id == 2 %>
+            <% if current_user.rol_id == 1 || current_user.rol_id == 2 %>
     			   	<td> <%= link_to 'Editar', {:controller => 'libros',:action => "edit", :id => id, :libro_id => id} %></td>
     			   	<td><%= link_to "Borrar", {:controller => 'libros', :action => 'destroy',:id => id, :libro_id => id }%> </td>
             <%end%>  
