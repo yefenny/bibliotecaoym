@@ -18,7 +18,14 @@
             </li>
          <% if current_user.rol_id == 1 || current_user.rol_id == 2 %> 				
 			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="/prestamos/index">Prestamos</a>
+				<a class="dropdown-toggle" data-toggle="dropdown" href="/prestamos/index">Prestamos <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/areasconocimientos/index">Areas de conocimiento </a></li>
+					<li><a href="/asignaturas/list">Asignaturas </a></li>
+					<li><a href="/rols/list">Roles </a></li>
+					<li><a href="/estudiantes/index">Estudiantes </a></li>
+					<li><a href="/usuarios/index">Usuarios </a></li>
+				</ul>
 			</li>
 		<%end%>	
          <% if current_user.rol_id == 1 || current_user.rol_id == 2 %> 				
