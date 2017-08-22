@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
  
-
+ devise_for :users, controllers: { sessions: 'users/sessions' }
   
   get 'repprestamos/index'
 
@@ -15,7 +15,7 @@ get 'menu/noautorizado'
 
   resources :validatestudents
   
-  devise_for :users
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    get 'book/list'
    get 'book/new'
