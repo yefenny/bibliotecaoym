@@ -37,7 +37,7 @@
       <strong>Descripción : </strong> <%= @libro.description %><br />
   <%end%>    
     <% if current_user.rol_id != 5 && @libro.digital == true%>
-
+    <input type="button" value="Abrir" class="btn btn-primary" onclick="window.location.href='<%= Url.Action("pdf", "libros") %>';" target="_blank" />
   	<a href="#" target="_blank"><%=  link_to 'Abrir', {:controller => 'libros', :action => 'pdf', :id => @libro.id },  target: :_blank %></a> 
     <% end %>	
 
