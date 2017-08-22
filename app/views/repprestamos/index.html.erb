@@ -13,8 +13,26 @@
 					<label>Fecha hasta:</label> 
 					<%= text_field_tag(:fechahasta,Time.now.strftime("%Y-%m-%d"), :class => "datepicker", :size => 15)%>
 				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Libro ID:</label> 
+					<%= text_field_tag(:libro_id,'',:id=>"elLibrorep", :class => "form-control", :size => 10)%>
+					<%= image_tag 'SearchIcon2.png', height: 27, width: 27, class: "aumentar", onclick: "buscaLibros()" %>
+				</td>	
+
+			</tr>
+			<tr>
+				<td>
+					<label>Estudiante ID:</label> 
+					<%= text_field_tag(:estudiante_id,'', :class => "form-control", :size => 10)%>
+				</td>	
+
 			</tr>	
+
 		</table>
+		<div id="dialogrep">
+		</div>
 	<%end%>
 
 </div>
@@ -29,6 +47,31 @@
            changeMonth : true,
            changeYear : true 
       });
+		function buscaLibros(){
+		 $("#dialogrep").html("");
+		$("<%= escape_javascript(render 'libros')%>").appendTo( "#dialogrep" );
+		$( "#dialogrep" ).dialog({
+							modal: true,
+							height: 470,
+							width: 570,
+							buttons: {
+								Cancel: function() {
+								$( this ).dialog( "close" );
+								}
+					    }});
+	$( "#dialogrep" ).position({
+		my: "center",
+		at: "center",
+		of: window
+	});
+	dataString = 'option=librosrep' ;
+		$.ajax(
+		{
+			type: "GET",
+			url: "/buscar/show",
+			data: dataString
+
+		});
 	})
 </script>
 <script src="jquery-ui/i18n/jquery.ui.datepicker-sv.js"></script>

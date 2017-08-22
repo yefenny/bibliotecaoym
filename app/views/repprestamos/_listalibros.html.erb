@@ -1,0 +1,22 @@
+<div class="row">
+        <div >
+          <table class="table" style="width: 100%;">
+            <thead>
+              <tr>
+                <th style="width: 30%;">ID </th> 
+                <th style="width: 70%;">NOMBRE</th>
+              </tr>  
+            </thead>
+            <tbody>
+            <% @libros.each do |c| %>
+	            <tr onclick="tomarvalor('<%= c.id %>')">
+		  			<td ><%= c.id%></td>
+		            <td ><%= c.title%> </td>  
+	            </tr>  
+            <% end %>
+       
+            
+            </tbody>
+          </table>
+        </div>
+</div>  

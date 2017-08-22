@@ -1,0 +1,14 @@
+<script type="text/javascript">
+	function tomarvalor(paramid){
+		$("#elLibrorep").val(paramid);
+		$("#dialogrep" ).dialog("close");
+
+	}
+</script>
+<div class ="form-control">
+  <div class ="form-control"> <%= render :partial => 'buscar', :locals => {:option1 => 'libros'}%> </div>
+  <div id="listadolibros" class ="form-control">
+     <%= render 'listalibros'%>
+  </div>
+</div>  
+ 

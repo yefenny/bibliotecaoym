@@ -26,12 +26,18 @@
 	    </fieldset>
 <%end%> 
 <% if controller_name == "repprestamos" %>
+	<% if @buscarl == "buscar" %>
+	    <fieldset id="group1">
+	        <input type="radio" value="nombre" name="group1" checked="true"><label>Nombre</label>
+	    </fieldset>
+	<%else%>
 		<fieldset id="group1">
 	        <input type="radio" value="nombre" name="group1" checked="true"><label>Todos</label>
 	         <input type="radio" value="fecha" name="group1" ><label>Activos</label>
 	         <input type="radio" value="fecha" name="group1" ><label>Devueltos</label>
 	         <input type="radio" value="fecha" name="group1" ><label>Vencidos</label>
 	    </fieldset>
+	<%end%>    
 <%end%> 
   
 	<div >	
