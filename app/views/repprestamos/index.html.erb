@@ -37,17 +37,6 @@
 
 </div>
 <script type="text/javascript">
-		$(function() 
-		{
-		$( ".datepicker" ).datepicker({
-           dateFormat : "dd/mm/yy",
-           buttonImageOnly : true,
-           buttonImage : "<%= asset_path('calendar.gif') %>",
-           showOn : "button",
-           changeMonth : true,
-           changeYear : true 
-      });	
-	})
 
 function buscaLibros(){
 		 $("#dialogrep").html("");
@@ -73,6 +62,7 @@ function buscaLibros(){
 			url: "/buscar/show",
 			data: dataString
 
-		});		
+		});	
+}			
 </script>
-<script src="jquery-ui/i18n/jquery.ui.datepicker-sv.js"></script>
+
