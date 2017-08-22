@@ -13,7 +13,6 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Libros <b class="caret"></b></a>
                 <ul class="dropdown-menu multi-level">
                     <li><a href="/libros/index">Digitales/Físicos</a></li>
-					<li><a href="/controller_name">Catálago</a></li>
 				</ul>
             </li>
          <% if current_user.rol_id == 1 || current_user.rol_id == 2 %> 				
@@ -40,12 +39,20 @@
 				</ul>
 			</li>
 		<%end%>	
-		  <% if current_user.rol_id == 1 || current_user.rol_id == 2 %> 				
+		<% if current_user.rol_id == 1 || current_user.rol_id == 2 %> 				
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Estadísticas <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/estadisticas/index">Descargas </a></li>
 					<li><a href="/estadisticaprestamos/index">Prestamos </a></li>
+				</ul>
+			</li>
+		<%end%>	
+		<% if current_user.rol_id == 1 || current_user.rol_id == 2 %> 				
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/repprestamos/index">Prestamos </a></li>
 				</ul>
 			</li>
 		<%end%>	
