@@ -9,12 +9,7 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li><a href="/principal/inicio">Inicio</a></li>
-            <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Libros <b class="caret"></b></a>
-                <ul class="dropdown-menu multi-level">
-                    <li><a href="/libros/index">Libreria</a></li>
-				</ul>
-            </li>
+            <li><a href="/libros/index">Libros</a></li>
          <% if current_user.rol_id == 1 || current_user.rol_id == 2 %> 				
 			<li><a href="/prestamos/index">Prestamos</a></li>
 		<%end%>	
@@ -32,6 +27,15 @@
 		<%end%>	
 		 <% if current_user.rol_id == 1 || current_user.rol_id == 2 %> 				
 			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="/prestamos/index">Estadísticas <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/estadisticas/index">Descargas </a></li>
+					<li><a href="/estadisticaprestamos/index">Prestamos </a></li>
+				</ul>
+			</li>
+		<%end%>	
+		 <% if current_user.rol_id == 1 || current_user.rol_id == 2 %> 				
+			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="/prestamos/index">Reportes <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/repprestamos/index">Prestamos </a></li>
@@ -42,6 +46,9 @@
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sesión<span class="caret"></span></a>
 				<ul class="dropdown-menu">	
+				<% if current_user.rol_id == 5 %> 
+               		<li><a href="validatestudents/new">Validar que soy estudiante</a></li>
+             	<%end%>  
 					<li><%= render 'menu/login_items'%></li>	                
 					
 				</ul>
