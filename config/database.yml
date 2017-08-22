@@ -11,9 +11,13 @@ default: &default
 development:
    adapter: postgresql
    encoding: unicode
-   database: library_development
-   username: postgres
-   password: titico17
+   #database: library_development
+   #username: postgres
+   #password: titico17
+   host: ec2-184-72-248-8.compute-1.amazonaws.com
+   database: dab41pfop8r552
+   username: xccngjjhbpzoum
+   password: 2120c36fac46dfeff05f2a8bfcb35e0238e8c84ec8a7acb6252beac85e38cbce
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

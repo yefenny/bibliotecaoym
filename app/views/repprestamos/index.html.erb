@@ -1,2 +1,33 @@
-<%= form_tag('/repprestamos', :action => "create", :target => "_blank") do -%> 
-<%end%>
+<div class="form-control">
+	<h3>Reporte prestamos </h3>
+	<%= form_tag('/repprestamos', :action => "create", :target => "_blank") do -%> 
+		<%= render 'buscar' %>
+		<table>
+			<tr>
+				<td>
+					<label>Fecha desde:</label> 
+					<%= text_field_tag(:fechadesde,Time.now.strftime("%Y-%m-%d"), :class => "datepicker", :size => 15)%>
+					
+				</td>
+				<td>
+					<label>Fecha hasta:</label> 
+					<%= text_field_tag(:fechahasta,Time.now.strftime("%Y-%m-%d"), :class => "datepicker", :size => 15)%>
+				</td>
+			</tr>	
+		</table>
+	<%end%>
+
+</div>
+<script type="text/javascript">
+		$(function() 
+		{
+		$( ".datepicker" ).datepicker({
+           dateFormat : "dd/mm/yy",
+           buttonImageOnly : true,
+           buttonImage : "<%= asset_path('calendar.gif') %>",
+           showOn : "button",
+           changeMonth : true,
+           changeYear : true 
+      });
+	})
+</script>
