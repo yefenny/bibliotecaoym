@@ -25,13 +25,13 @@
 			<tr>
 				<td>
 					<label>Estudiante ID:</label> 
-					<%= text_field_tag(:estudiante_id,'', :class => "form-control", :size => 10)%>
+					<%= text_field_tag(:estudiante_matricula,'', :class => "form-control", :size => 10)%>
 				</td>	
 
 			</tr>	
 
 		</table>
-		<% @pre = 'p' %>
+		  <%= submit_tag "Generar" , class: "btn btn-primary" %>
 		<div id="dialogrep">
 		</div>
 	<%end%>
