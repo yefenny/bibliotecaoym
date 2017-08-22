@@ -110,6 +110,7 @@ class LibrosController < ApplicationController
 
          Libro.find(params[:id]).destroy
          libro = params[:id]
+         Prestamo.where(:libro_id => libro).destroy_all
          Librodescarga.where(:libro_id => libro).destroy_all
          Cantidadlibro.where("libro_id = #{params[:id]}").destroy_all
          redirect_to :action => 'index'
