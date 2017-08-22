@@ -5,18 +5,20 @@
 <nav class="navbar navbar-inverse" id = "headerMenu">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">appName</a>
+			<a class="navbar-brand" href="#">Biblioteca NYN</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li><a href="#">Inicio</a></li>
+			<li><a href="/principal/inicio">Inicio</a></li>
             <li>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Libros <b class="caret"></b></a>
                 <ul class="dropdown-menu multi-level">
-                    <li><a href="/libros/index">Libreria</a></li>
+                    <li><a href="/libros/index">Digitales/Físicos</a></li>
+					<li><a href="/controller_name">Catálago</a></li>
 				</ul>
-            </li>				
+            </li>
+         <% if current_user.rol_id == 1 || current_user.rol_id == 2 %> 				
 			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Matenimientos <span class="caret"></span></a>
+				<a class="dropdown-toggle" data-toggle="dropdown" href="/prestamos/index">Prestamos <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/areasconocimientos/index">Areas de conocimiento </a></li>
 					<li><a href="/asignaturas/list">Asignaturas </a></li>
@@ -25,11 +27,13 @@
 					<li><a href="/usuarios/index">Usuarios </a></li>
 				</ul>
 			</li>
+		<%end%>	
+
 			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Option 3 <span class="caret"></span></a>
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sesión<span class="caret"></span></a>
 				<ul class="dropdown-menu">	
 					<li><%= render 'menu/login_items'%></li>	                
-
+					
 				</ul>
 			</li>
 		</ul>
