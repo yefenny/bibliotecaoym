@@ -15,7 +15,13 @@
                     <li><a href="/libros/index">Digitales/Físicos</a></li>
 					<li><a href="/controller_name">Catálago</a></li>
 				</ul>
-            </li>				
+            </li>
+         <% if current_user.rol_id == 1 || current_user.rol_id == 2 %> 				
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="/prestamos/index">Prestamos</a>
+			</li>
+		<%end%>	
+         <% if current_user.rol_id == 1 || current_user.rol_id == 2 %> 				
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Mantenimientos <span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -26,34 +32,21 @@
 					<li><a href="/usuarios/index">Usuarios </a></li>
 				</ul>
 			</li>
+		<%end%>	
+		  <% if current_user.rol_id == 1 || current_user.rol_id == 2 %> 				
 			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Option 3 <span class="caret"></span></a>
-				<ul class="dropdown-menu">	
-					<li><a href="/controller_name">Option 3-A</a></li>	                
-					<li class="dropdown-submenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Option 3-B</a>
-                        <ul class="dropdown-menu">
-							<li><a href="/controller_name">Option 3-B (1)</a></li>
-							<li><a href="/controller_name">Option 3-B (2)</a></li>
-							<li><a href="/controller_name">Option 3-B (3)</a></li>
-							<li><a href="/controller_name">Option 3-B (4)</a></li>
-						</ul>
-					</li>	
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Estadísticas <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/estadisticas/index">Descargas </a></li>
+					<li><a href="/estadisticaprestamos/index">Prestamos </a></li>
 				</ul>
 			</li>
+		<%end%>	
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sesión<span class="caret"></span></a>
 				<ul class="dropdown-menu">	
 					<li><%= render 'menu/login_items'%></li>	                
-					<li class="dropdown-submenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Option 3-B</a>
-                        <ul class="dropdown-menu">
-							<li><a href="/controller_name">Option 3-B (1)</a></li>
-							<li><a href="/controller_name">Option 3-B (2)</a></li>
-							<li><a href="/controller_name">Option 3-B (3)</a></li>
-							<li><a href="/controller_name">Option 3-B (4)</a></li>
-						</ul>
-					</li>	
+					
 				</ul>
 			</li>
 		</ul>
