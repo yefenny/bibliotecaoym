@@ -1,48 +1,67 @@
-<%= javascript_include_tag "jquery.min", "data-turbolinks-track" => "reload" %>
-<%= javascript_include_tag "bootstrap.min", "data-turbolinks-track" => "reload" %>
-<%= stylesheet_link_tag "bootstrap.min" %>
-<%= stylesheet_link_tag "navbarchild" %>
-<nav class="navbar navbar-inverse" id = "headerMenu">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">appName</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li><a href="#">Inicio</a></li>
-            <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Option 1 <b class="caret"></b></a>
-                <ul class="dropdown-menu multi-level">
-                    <li><a href="/controller_name">Option 1-A</a></li>
-					<li><a href="/controller_name">Option 1-B</a></li>
-					<li><a href="/controller_name">Option 1-C</a></li>
-					<li><a href="/controller_name">Option 1-D</a></li>
-					<li><a href="/controller_name">Option 1-E</a></li>
-				</ul>
-            </li>				
-			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Option 2 <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="/controller_name">Option 2-A</a></li>
-					<li><a href="/controller_name">Option 2-B</a></li>
-					<li><a href="/controller_name">Option 2-C</a></li>
-					<li><a href="/controller_name">Option 2-D</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Option 3 <span class="caret"></span></a>
-				<ul class="dropdown-menu">	
-					<li><a href="/controller_name">Option 3-A</a></li>	                
-					<li class="dropdown-submenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Option 3-B</a>
-                        <ul class="dropdown-menu">
-							<li><a href="/controller_name">Option 3-B (1)</a></li>
-							<li><a href="/controller_name">Option 3-B (2)</a></li>
-							<li><a href="/controller_name">Option 3-B (3)</a></li>
-							<li><a href="/controller_name">Option 3-B (4)</a></li>
-						</ul>
-					</li>	
-				</ul>
-			</li>
-		</ul>
-	</div>
-</nav>
+<div class="container-fixed">
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" >Biblioteca Digital NyN</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+       
+        <li><a href="/principal/inicio">Inicio</a></li>
+        <li><a href="/libros/index">Libros</a></li>
+        <% if current_user.rol_id == 1 || current_user.rol_id == 2 || current_user.rol_id == 3 %>  
+        <li><a href="/prestamos/index">Prestamos</a></li>
+      <% end %> 
+
+       <% if current_user.rol_id == 1 || current_user.rol_id == 2 %>   
+            <li class="dropdown "><a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">Mantenimiento <b class="caret"></b></a>
+                <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                    <li role="presentation"><a href="/areasconocimientos/index" role="menuitem">Area de conocimiento</a></li>
+                    <li role="presentation"><a href="/asignaturas/list" role="menuitem">Asignaturas</a></li>
+                <% if current_user.rol_id == 1  %>      
+                    <li role="presentation"><a href="/rols/list" role="menuitem">Roles</a></li>
+                    <li role="presentation"><a href="/estudiantes/index" role="menuitem">Estudiantes</a></li>
+                    <li role="presentation"><a href="/usuarios/index" role="menuitem">Usuarios</a></li>
+                <%end%>    
+                </ul>
+            </li>
+        <%end%>    
+
+        <% if current_user.rol_id == 1 || current_user.rol_id == 2 %>  
+                <li class="dropdown "><a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">Estadisticas <b class="caret"></b></a>
+                <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                    <li role="presentation"><a href="/estadisticas/index" role="menuitem">Descargas</a></li>
+                    <li role="presentation"><a href="/estadisticaprestamos/index" role="menuitem">Prestamos</a></li>
+                   
+                 
+                </ul>
+            </li>
+        <%end%>      
+         <% if current_user.rol_id == 1 || current_user.rol_id == 2 %>     
+              <li class="dropdown "><a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">Reportes <b class="caret"></b></a>
+                <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                    <li role="presentation"><a href="/repprestamos/index" role="menuitem">Prestamos</a></li>
+                </ul>
+            </li>
+        <%end%>  
+       
+           <li class="dropdown "><a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">Sesión <b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+             <% if current_user.rol_id == 5 %> 
+               <li role="presentation"><a href="validatestudents/new" role="menuitem">Validar que soy estudiante</a></li>
+             <%end%>   
+                <li role="presentation"><%= render 'menu/login_items'%></li>
+                
+             
+            </ul>
+        </li>
+       
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
