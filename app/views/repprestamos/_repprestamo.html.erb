@@ -1,6 +1,6 @@
 <h1 style="text-align: center">Reporte de prestamos</h1>
 <% if @fechadesde != "" && @fechahasta != "" %>
-<h3 style="text-align: center">Desde <%=@fechadesde%> hasta <%=@fechahasta%> </h3>
+<h3 style="text-align: center">Desde <%=@fechadesde.to_date.strftime("%d-%m-%Y")%> hasta <%=@fechahasta.to_date.strftime("%d-%m-%Y")%> </h3>
 <%end%>
 <table class="table" style="width: 100%; text-align: center; font-size: 18px;">
             <thead>
@@ -20,9 +20,13 @@
             <tbody>
               <% @rep.each do |c| %>
               <tr>
-      			    <td ><%= c.fechap%></td>
-                <td ><%= c.fechae %> </td>
-                <td><%= c.fechad %> </td>
+      			    <td ><%= c.fechap.strftime("%d-%m-%Y")%></td>
+                <td ><%= c.fechae.strftime("%d-%m-%Y") %> </td>
+                <% if c.fechad != "" && c.fechad != nil %>
+                  <td><%= c.fechad.strftime("%d-%m-%Y") %> </td>
+                <%else%> 
+                  <td><%= c.fechad %> </td>
+                <%end%>
                 <td><%= c.nombre_estudiante %> </td>
                 <td><%= c.matricula%> </td>
                 <td><%= c.title%> </td>
@@ -41,7 +45,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><%=total%></td>
+                <td><strong><%=total%></strong></td>
             
             </tbody>
 </table>
