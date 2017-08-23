@@ -1,0 +1,24 @@
+<h1 style="text-align: center">Reporte de descargas</h1>
+<h3 style="text-align: center">Desde <%=@fechadesde.to_date.strftime("%d-%m-%Y")%> hasta <%=@fechahasta.to_date.strftime("%d-%m-%Y")%> </h3>
+<table class="table" style="width: 100%; text-align: center; font-size: 18px;">
+            <thead>
+              <tr>
+                <th>Libro ID</th> 
+                <th>Título</th>
+                <th>Cantidad</th>
+                <th>Asignatura</th>
+                <th>Área de conocimiento</th>
+              </tr>  
+            </thead>
+            <tbody>
+            <% @libros.each do |c| %>
+	            <tr>
+		  			<td ><%= c.id%></td>
+		            <td ><%= c.title%> </td> 
+		            <td ><%= c.count%> </td>  
+	            </tr>  
+            <% end %>
+       
+            
+            </tbody>
+</table>

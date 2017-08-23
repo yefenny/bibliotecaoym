@@ -1,0 +1,21 @@
+<div class="form-control">
+	<h3>Reporte descargas </h3>
+	<%= form_tag('/repdescargas', :action => "create", :target => "_blank") do -%> 
+		<table>
+			<tr>
+				<td>
+					<label>Fecha desde:</label> 
+					<%= text_field_tag(:fechadesde,Time.now.strftime("%Y-%m-%d"), :class => "datepicker", :size => 15)%>
+					
+				</td>
+				<td>
+					<label>Fecha hasta:</label> 
+					<%= text_field_tag(:fechahasta,Time.now.strftime("%Y-%m-%d"), :class => "datepicker", :size => 15)%>
+				</td>
+			</tr>	
+
+		</table>
+		  <%= submit_tag "Generar" , class: "btn btn-primary" %>
+	<%end%>
+
+</div>

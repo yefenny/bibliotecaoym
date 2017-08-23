@@ -1,6 +1,7 @@
+
 <h1 style="text-align: center">Reporte de prestamos</h1>
 <% if @fechadesde != "" && @fechahasta != "" %>
-<h3 style="text-align: center">Desde <%=@fechadesde.to_date.strftime("%d-%m-%Y")%> hasta <%=@fechahasta.to_date.strftime("%d-%m-%Y")%> </h3>
+  <h3 style="text-align: center">Desde <%=@fechadesde.to_date.strftime("%d-%m-%Y")%> hasta <%=@fechahasta.to_date.strftime("%d-%m-%Y")%> </h3>
 <%end%>
 <table class="table" style="width: 100%; text-align: center; font-size: 18px;">
             <thead>
