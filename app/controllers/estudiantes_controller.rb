@@ -78,7 +78,7 @@ class EstudiantesController < ApplicationController
 
   end
 
-  def destroy
+  def delete
     
        if current_user.rol_id == 1 
 
@@ -90,7 +90,7 @@ class EstudiantesController < ApplicationController
             @user.rol_id = 5 
             @user.save
          end  
-         Estudiante.find(params[:id]).destroy 
+         Estudiante.find(params[:id]).delete 
          redirect_to :action => 'index'
       else
           render 'menu/noautorizado'
