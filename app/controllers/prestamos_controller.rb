@@ -54,6 +54,7 @@ before_action :authenticate_user!
          @prestamo.libro_id = libroid
          @prestamo.fechap = Time.now
          @prestamo.fechae = Time.now + 7.days
+         puts @libro
          @libro = Libro.where("id = #{libroid}").first
          @libro.cantidadlibro.cantidad =   @libro.cantidadlibro.cantidad - 1
          if @prestamo.save
