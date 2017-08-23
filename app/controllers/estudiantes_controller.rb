@@ -93,7 +93,7 @@ class EstudiantesController < ApplicationController
             Estudiante.find(params[:id]).destroy 
             redirect_to :action => 'index'
          else
-             @errormsg = 'Este estudiante tiene prestamos activos, no puede ser eliminado' 
+             $errormsg = 'Este estudiante tiene prestamos activos, no puede ser eliminado' 
              redirect_to :action => 'index'  
          end
       else
