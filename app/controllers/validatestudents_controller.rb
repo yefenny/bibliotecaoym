@@ -10,6 +10,9 @@ class ValidatestudentsController < ApplicationController
   def create
   	if current_user.rol_id == 5
 	  	estudiante_matricula = params[:matricula]
+	  	if estudiante_matricula !="" && estudiante_matricula != nil
+	  		estudiante_matricula = estudiante_matricula.mb_chars.upcase
+	  	end	
 		estudiante_clave = params[:clave]
 		estudiantes = Estudiante.all
 
@@ -31,7 +34,7 @@ class ValidatestudentsController < ApplicationController
 		if studentidv != 0 && studentidv != nil
 			estudiante = Estudiante.where("id = #{studentidv}").first
 			estudiante.user_id = current_user.id
-			@usuario = User.where("id = #{current_user.id}").first
+			usuario = User.where("id = #{current_user.id}").first
 			usuario.rol_id = 4
 			usuario.estudiante_id = estudiante.id
 			usuario.save

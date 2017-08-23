@@ -5,6 +5,9 @@
 			<div class="field">
 				<h4> ¿Es usted un estudiante? </h4>
 				<%= form_tag "/validatestudents", :action=> "create" do %>
+						<% flash.each do |key, value| %>
+						  <%= content_tag :div, value, class: "flash #{key}" %>
+						<% end %>
 					<div class="form-group">
 						<div class="col-md-6">
 						  	<%=check_box_tag "echeck",0, false,{ :id=> "estudiantet", :onchange => "esestudiante()"}%>
