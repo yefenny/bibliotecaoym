@@ -21,7 +21,7 @@ get 'menu/noautorizado'
   resources :validatestudents
   resources :repprestamos
   resources :repdescargas
-  resources :estudiantes
+  
   
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -34,7 +34,7 @@ get 'menu/noautorizado'
    get 'book/delete'
    get 'book/update'
    get 'book/show_subjects'
-   get 'estudiantes/delete'
+   get 'estudiantes/destroy'
    get 'validatestudents/new'
    post 'validatestudents/create' 
    get 'estudiantes/new'

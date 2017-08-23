@@ -78,20 +78,24 @@ class EstudiantesController < ApplicationController
 
   end
 
-  def delete
-    
+  def destroy
        if current_user.rol_id == 1 
-
          @estudiante = Estudiante.find(params[:id])
-         if @estudiante.user_id != nil && @estudiante.user_id != 0
-            userid = @estudiante.user_id
-            @user = User.where("id = #{userid}").first
-            @user.estudiante_id = nil
-            @user.rol_id = 5 
-            @user.save
-         end  
-         Estudiante.find(params[:id]).delete 
-         redirect_to :action => 'index'
+         @prestamos = Prestamo.where("estudiante_id = #{@estudiante.id}").count
+         if @prestamos ==0
+            if @estudiante.user_id != nil && @estudiante.user_id != 0
+              userid = @estudiante.user_id
+              @user = User.where("id = #{userid}").first
+              @user.estudiante_id = nil
+              @user.rol_id = 5 
+              @user.save
+            end  
+            Estudiante.find(params[:id]).destroy 
+            redirect_to :action => 'index'
+         else
+             @errormsg = 'Este estudiante tiene prestamos activos, no puede ser eliminado' 
+             redirect_to :action => 'index'  
+         end
       else
           render 'menu/noautorizado'
       end   
