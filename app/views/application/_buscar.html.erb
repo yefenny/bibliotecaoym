@@ -56,12 +56,14 @@
 				        break;
 				    }
 				}
+				if(buscar_por != "todos"){}
 				 dataString = 'el_controller='+controller+'&buscar_por='+buscar_por+'&buscar_texto='+buscar_texto
 	  					  $.ajax({  
 	                         type: "GET",  
 							 url: "/buscar/show",
 	                         data: dataString  
 	                        }); 
+				}
 	  		}			  
 	  
 
