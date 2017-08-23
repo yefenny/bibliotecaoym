@@ -11,7 +11,7 @@
 				</td>
 				<td>
 					<label>Fecha hasta:</label> 
-					<%= text_field_tag(:fechahasta,Time.now.strftime("%Y-%m-%d"),:id=>"fechahastap" :class => "datepicker", :size => 15)%>
+					<%= text_field_tag(:fechahasta,Time.now.strftime("%Y-%m-%d"),{:id=>"fechahastap", :class => "datepicker", :size => 15})%>
 				</td>
 			</tr>
 			<tr>
