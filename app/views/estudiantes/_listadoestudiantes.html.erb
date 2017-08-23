@@ -17,7 +17,7 @@
                 <td> <%= c.matricula %> </td>
                 <% if current_user.rol_id == 1 %>
         			   	<td> <%= link_to 'Editar', {:controller => 'estudiantes', :action => "edit", :id => c.id} %></td>
-                  <td><%= link_to "Borrar", {:controller => 'estudiantes', :method => 'destroy', :id => c.id }%></td>
+                  <td><%= link_to "Borrar", {:controller => 'estudiantes', :action => 'destroy', :id => c.id }%></td>
 
                 <%end%>  
              </tr>  
