@@ -33,10 +33,11 @@
 	         <input type="radio" value="vencidos" name="group1" ><label>Vencidos</label>
 	    </fieldset>  
 <%end%> 
-  
-<div >
-		<%= text_field_tag 'valorconsulta', '', {:class => "form-control ", :style=> "width: 200px", :onkeypress  => "buscar(this,event)"} %>
-</div>	
+ <% if controller_name != "repprestamos" %> 
+	<div >
+			<%= text_field_tag 'valorconsulta', '', {:class => "form-control ", :style=> "width: 200px", :onkeypress  => "buscar(this,event)"} %>
+	</div>	
+<%end%>	
 
 
 
