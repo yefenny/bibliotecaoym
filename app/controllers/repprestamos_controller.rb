@@ -5,8 +5,8 @@ class RepprestamosController < ApplicationController
   end
   def create
   	@buscarpor = params[:group1]
-  	@fechadesde = params[:fechadesde]
-  	@fechahasta = params[:fechahasta]
+  	@fechadesde = params[:fechadesde].strftime("%Y-%m-%d")
+  	@fechahasta = params[:fechahasta].strftime("%Y-%m-%d")
   	@fechaahora = Time.now.strftime("%Y-%m-%d")
   	@estudiante_matricula = params[:estudiante_matricula]
   	@libro_id = params[:libro_id]
