@@ -71,12 +71,13 @@
 				}	
 
 	  		}	
-	  	function valor(select){
+	  	function valor(){
 	  		var buscar_por;
+	  		var arrRadio= document.getElementsByName("group1");
 	  		var i;
-	  		for (i = 0; i < select.length; i++) {
-				    if (select[i].checked == true) {
-				        buscar_por = select[i].value;
+	  		for (i = 0; i < arrRadio.length; i++) {
+				    if (arrRadio[i].checked == true) {
+				        buscar_por = arrRadio[i].value;
 				        break;
 				    }
 				}
