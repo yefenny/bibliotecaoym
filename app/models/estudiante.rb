@@ -1,5 +1,5 @@
 class Estudiante < ApplicationRecord
-	belongs_to :user
+	#belongs_to :user
 	has_many :prestamos
 	validates :name, presence: true
 	validates :lastname, presence: true
