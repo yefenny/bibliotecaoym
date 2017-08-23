@@ -5,8 +5,8 @@ class RepprestamosController < ApplicationController
   end
   def create
   	@buscarpor = params[:group1]
-  	@fechadesde = params[:fechadesde].strftime("%Y-%m-%d")
-  	@fechahasta = params[:fechahasta].strftime("%Y-%m-%d")
+  	@fechadesde = params[:fechadesde].to_date.strftime("%Y-%m-%d")
+  	@fechahasta = params[:fechahasta].to_date.strftime("%Y-%m-%d")
   	@fechaahora = Time.now.strftime("%Y-%m-%d")
   	@estudiante_matricula = params[:estudiante_matricula]
   	@libro_id = params[:libro_id]
@@ -26,7 +26,7 @@ class RepprestamosController < ApplicationController
   	if @libro_id != ""
   		sql+= " and libro_id = #{@libro_id}"
   	end	
-  	if @fechadesde !="" && @fechahasta !=""
+  	if @fechadesde !="" && @fechahasta !="" && @buscarpor =="todos"
   		sql+= " and fechap >= '#{@fechadesde}' and fechap <= '#{@fechahasta}'"
   	end	
 
