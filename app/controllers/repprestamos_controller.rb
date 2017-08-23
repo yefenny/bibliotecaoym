@@ -12,13 +12,13 @@ class RepprestamosController < ApplicationController
   	@libro_id = params[:libro_id]
   	sql = ""
   	if @buscarpor == "activos"
-  		sql +="fechad IS NULL and fechae >= '#{fechaahora}' "
+  		sql +="fechad IS NULL and fechae >= '#{@fechaahora}' "
   	elsif @buscarpor =="todos"	
   		sql +="fechap = fechap"
   	elsif @buscarpor =="devueltos"	
   		sql +="fechad is not NULL"
   	elsif @buscarpor =="vencidos"
-  		sql +="fechad IS NULL and fechae < '#{fechaahora}' "		
+  		sql +="fechad IS NULL and fechae < '#{@fechaahora}' "		
   	end 
   	if @estudiante_matricula != ""
   		sql+= " and matricula ilike '#{@estudiante_matricula}'"
