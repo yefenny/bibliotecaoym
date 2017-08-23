@@ -19,7 +19,7 @@ class BuscarController < ApplicationController
   			@estudiantes = Estudiante.where("unaccent(matricula) ilike unaccent(?)", "%#{buscar_texto}%").all
   		end 
   	end 
-     if @controller == "prestamos" || @controller == "repprestamos"
+     if @controller == "prestamos" 
       if params[:option] ="libros"
         @libros = Libro.where("unaccent(title) ilike unaccent(?)", "%#{buscar_texto}%").all
       end

@@ -30,7 +30,7 @@ class RepprestamosController < ApplicationController
   		sql+= " and fechap >= '#{@fechadesde}' and fechap <= '#{@fechahasta}'"
   	end	
 
-  	@rep = V_prestamo.where(sql).all
+  	@rep = Repprestamo.where(sql).all
   	render :partial=> 'repprestamo'
   end
 end

@@ -1,4 +1,8 @@
-<table class="table" style="width: 100%;">
+<h1 style="text-align: center">Reporte de prestamos</h1>
+<% if @fechadesde != "" && @fechahasta != "" %>
+<h3 style="text-align: center">Desde <%=@fechadesde%> hasta <%=@fechahasta%> </h3>
+<%end%>
+<table class="table" style="width: 100%; text-align: center;">
             <thead>
               <tr>
                 <th >Fecha prestamo</th>
@@ -9,21 +13,35 @@
                 <th >Título libro</th>
                 <th >Asignatura</th>
                 <th >Area de conocimiento </th>
+                <th >Mora aplicada </th>
               </tr>
             </thead>
+            <% total = 0 %>
             <tbody>
               <% @rep.each do |c| %>
-            <tr>
-  			    <td ><%= c.fechap%></td>
-            <td ><%= c.fechae %> </td>
-            <td><%= c.fechad %> </td>
-            <td><%= c.nombre %> </td>
-            <td><%= c.matricula%> </td>
-            <td><%= c.nombre_asignatura%> </td>
-            <td><%= c.nombre_area%> </td>
-             </tr>  
-             <% end %>
-       
+              <tr>
+      			    <td ><%= c.fechap%></td>
+                <td ><%= c.fechae %> </td>
+                <td><%= c.fechad %> </td>
+                <td><%= c.nombre_estudiante %> </td>
+                <td><%= c.matricula%> </td>
+                <td><%= c.title%> </td>
+                <td><%= c.nombre_asignatura%> </td>
+                <td><%= c.nombre_area%> </td>
+                <td><%= c.valor%> </td>
+              </tr> 
+                <% total += c.valor %>
+               <% end %>
+              <tr>
+                <td><strong>Total</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><%=total%></td>
             
             </tbody>
 </table>

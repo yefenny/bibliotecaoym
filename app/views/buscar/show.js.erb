@@ -9,8 +9,5 @@
 	$("<%= escape_javascript(render "/prestamos/listalibros") %>").appendTo("#listadolibros");	
 <% elsif @controller == "usuarios" %>
 	$(document.getElementById('listausuarios').innerHTML ='');
-	$("<%= escape_javascript(render "/usuarios/listadousuarios") %>").appendTo("#listausuarios");
-<% elsif @controller == "repprestamos" %>
-	$(document.getElementById('listadolibrosrep').innerHTML ='');
-	$("<%= escape_javascript(render "/repprestamos/listalibros") %>").appendTo("#listadolibrosrep");			
+	$("<%= escape_javascript(render "/usuarios/listadousuarios") %>").appendTo("#listausuarios");			
 <%end%>
