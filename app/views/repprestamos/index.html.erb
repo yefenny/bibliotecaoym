@@ -64,5 +64,16 @@ function buscaLibros(){
 			data: dataString
 
 		});	
-}			
+}	
+
+		$(function() 
+		{
+		$( ".datepicker" ).datepicker({
+           dateFormat : "dd/mm/yy",
+           buttonImageOnly : true,
+           buttonImage : "<%= asset_path('calendar.gif') %>",
+           showOn : "button",
+           changeMonth : true,
+           changeYear : true 
+      });		
 </script>
