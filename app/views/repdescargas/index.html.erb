@@ -5,12 +5,12 @@
 			<tr>
 				<td>
 					<label>Fecha desde:</label> 
-					<%= text_field_tag(:fechadesde,Time.now.strftime("%Y-%m-%d"), :class => "datepicker", :size => 15)%>
+					<%= text_field_tag(:fechadesde,Time.now.strftime("%d-%m-%Y"), :class => "datepicker", :size => 15)%>
 					
 				</td>
 				<td>
 					<label>Fecha hasta:</label> 
-					<%= text_field_tag(:fechahasta,Time.now.strftime("%Y-%m-%d"), :class => "datepicker", :size => 15)%>
+					<%= text_field_tag(:fechahasta,Time.now.strftime("%d-%m-%Y"), :class => "datepicker", :size => 15)%>
 				</td>
 			</tr>	
 
@@ -19,3 +19,16 @@
 	<%end%>
 
 </div>
+<script type="text/javascript">
+		$(function() 
+		{
+		$( ".datepicker" ).datepicker({
+           dateFormat : "dd/mm/yy",
+           buttonImageOnly : true,
+           buttonImage : "<%= asset_path('calendar.gif') %>",
+           showOn : "button",
+           changeMonth : true,
+           changeYear : true 
+      });
+      })
+</script>

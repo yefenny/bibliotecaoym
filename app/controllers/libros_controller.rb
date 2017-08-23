@@ -27,11 +27,14 @@ class LibrosController < ApplicationController
       if current_user.rol_id == 1 || current_user.rol_id == 2 || current_user.rol_id == 3
 
          @libro = Libro.new(libro_params)
-         cantidad = params[:cantidad]      
-            if cantidad !='0' && cantidad != ''  #VALIDAR SI ES FISICO
+         cantidad = params[:cantidad] 
+         check = "false"
+         check = params[:echeck].to_s.downcase     
+            if check !='false'  #VALIDAR SI ES FISICO
                @libro.fisico = true
             else
-               @libro.fisico = false    
+               @libro.fisico = false
+
             end  
          @cantidad = Cantidadlibro.new #INGRESAR LA CANTIDAD DE LIBROS
          if @libro.save
@@ -41,11 +44,13 @@ class LibrosController < ApplicationController
             else
                @libro.digital = false
                @libro.save
-            end   
-            @cantidad.cantidad = params[:cantidad]
-            @cantidad.cantidad_total = params[:cantidad]
-            @cantidad.libro_id = @libro.id
-            @cantidad.save
+            end  
+            if check !='false'  
+               @cantidad.cantidad = params[:cantidad]
+               @cantidad.cantidad_total = params[:cantidad]
+               @cantidad.libro_id = @libro.id
+               @cantidad.save
+            end
             redirect_to :action => 'index'
          else
             @asignaturas = Asignatura.all
@@ -107,13 +112,18 @@ class LibrosController < ApplicationController
    
    def destroy
       if current_user.rol_id == 1 || current_user.rol_id == 2 || current_user.rol_id == 3
-
-         Libro.find(params[:id]).destroy
-         libro = params[:id]
-         Prestamo.where(:libro_id => libro).destroy_all
-         Librodescarga.where(:libro_id => libro).destroy_all
-         Cantidadlibro.where("libro_id = #{params[:id]}").destroy_all
-         redirect_to :action => 'index'
+         @libros = Libro.find(params[:id])
+         @prestamos = Prestamo.where("libro_id = #{@libros.id} and fechad is null").count
+         if @prestamos == 0
+            Libro.find(params[:id]).destroy
+            libro = params[:id]
+            Prestamo.where(:libro_id => libro).destroy_all
+            Librodescarga.where(:libro_id => libro).destroy_all
+            Cantidadlibro.where("libro_id = #{params[:id]}").destroy_all
+         else  
+            $errormsg = "Este libro tiene prestamos activos, no puede ser eliminado"  
+         end 
+         redirect_to :action => 'index'  
       else
          render 'menu/noautorizado'
       end   

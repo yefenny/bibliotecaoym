@@ -65,7 +65,7 @@
 <div class="form-group" id="cantidad">
 	<div class="col-md-2">
 	  	<label for="cantidad" >Cantidad:</label>  
-	  	 <%=text_field_tag :cantidad, @libro.cantidadlibro.cantidad_total, class:  "form-control" %>
+	  	 <%=number_field_tag :cantidad, @libro.cantidadlibro.cantidad_total,{min: 1, class:  "form-control"}  %>
 	</div>  	
 </div>
 

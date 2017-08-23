@@ -1,4 +1,9 @@
-
+ <% if $errormsg !=nil && $errormsg !=''  %>
+    <div class="alert alert-danger" role="alert">
+        <%= $errormsg %>
+    </div>
+ <%end%>   
+<% $errormsg =""%>
  <div class="row">
         <div >
           <table class="table" style="width: 100%;">
