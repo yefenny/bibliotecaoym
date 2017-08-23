@@ -31,7 +31,7 @@ class ValidatestudentsController < ApplicationController
 		if studentidv != 0 && studentidv != nil
 			estudiante = Estudiante.where("id = #{studentidv}").first
 			estudiante.user_id = current_user.id
-			@usuario = User.where("id = #{current_user}").first
+			@usuario = User.where("id = #{current_user.id}").first
 			usuario.rol_id = 4
 			usuario.estudiante_id = estudiante.id
 			usuario.save
