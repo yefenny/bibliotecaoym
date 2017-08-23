@@ -64,12 +64,7 @@
 	                         data: dataString  
 	                        }); 
 				}
-			if(buscar_por != "todos"){
-				document.getElementById('fechahastap').style.display = "none";
-
-					
-				}	
-
+			
 	  		}	
 	  	function valor(){
 	  		var buscar_por;
@@ -81,6 +76,10 @@
 				        break;
 				    }
 				}
+			if(buscar_por != "todos"){
+				document.getElementById('fechahastap').style.display = "none";
+					
+				}		
 	  		alert(buscar_por);
 	  	}			  
 	  
