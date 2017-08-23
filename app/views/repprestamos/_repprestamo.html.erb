@@ -1,0 +1,29 @@
+<table class="table" style="width: 100%;">
+            <thead>
+              <tr>
+                <th >Fecha prestamo</th>
+                <th >Fecha límite de devolución</th>
+                <th >Fecha de devolución</th>
+                <th >Nombre estudiante </th> 
+                <th >Matrícula estudiante </th> 
+                <th >Título libro</th>
+                <th >Asignatura</th>
+                <th >Area de conocimiento </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @rep.each do |c| %>
+            <tr>
+  			    <td ><%= c.fechap%></td>
+            <td ><%= c.fechae %> </td>
+            <td><%= c.fechad %> </td>
+            <td><%= c.nombre %> </td>
+            <td><%= c.matricula%> </td>
+            <td><%= c.nombre_asignatura%> </td>
+            <td><%= c.nombre_area%> </td>
+             </tr>  
+             <% end %>
+       
+            
+            </tbody>
+</table>
