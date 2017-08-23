@@ -3,23 +3,26 @@
 	<%= form_tag('/repprestamos', :action => "create", :target => "_blank") do -%> 
 		<%= render 'buscar' %>
 		<table>
-			<tr>
-				<td>
+			<tr id="fechastd">
+				<td >
 					<label>Fecha desde:</label> 
 					<%= text_field_tag(:fechadesde,Time.now.strftime("%d-%m-%Y"), :class => "datepicker", :size => 15)%>
 					
 				</td>
-				<td>
+				<td >
 					<label>Fecha hasta:</label> 
-					<%= text_field_tag(:fechahasta,Time.now.strftime("%d-%m-%Y"),{:id=>"fechahastap", :class => "datepicker", :size => 15})%>
+					<%= text_field_tag(:fechahasta,Time.now.strftime("%d-%m-%Y"),{:class => "datepicker", :size => 15})%>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<label>Libro ID:</label> 
-					<%= text_field_tag(:libro_id,'', :id=>"elLibrorep", :class => "form-control", :size => 10)%>
+					<%= text_field_tag(:libro_id,'', :id=>"elLibrorep", :class => "form-control", :size => 5)%>
+				</td>
+				<td>	
 					<%= image_tag 'SearchIcon2.png', height: 27, width: 27, class: "aumentar", onclick: "buscaLibros()" %>
 				</td>	
+				
 
 			</tr>
 			<tr>
