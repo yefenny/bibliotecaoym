@@ -324,8 +324,7 @@ span.input-group-addon i {
   background-repeat: no-repeat;
 }
 .fade-carousel .slides .slide-1 {
-
-  background: url(asset-path('slide-1.jpg'));
+background-image: image_path('slide-1.jpg');
 }
 .fade-carousel .slides .slide-2 {
   background-image: url(photo-1416339684178-3a239570f315?q=75&fm=jpg&s=c39d9a3bf66d6566b9608a9f1f3765af);
