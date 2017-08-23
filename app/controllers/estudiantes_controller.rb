@@ -81,7 +81,7 @@ class EstudiantesController < ApplicationController
   def destroy
        if current_user.rol_id == 1 
          @estudiante = Estudiante.find(params[:id])
-         @prestamos = Prestamo.where("estudiante_id = #{@estudiante.id}").count
+         @prestamos = Prestamo.where("estudiante_id = #{@estudiante.id} and fechad is null").count
          if @prestamos ==0
             if @estudiante.user_id != nil && @estudiante.user_id != 0
               userid = @estudiante.user_id
