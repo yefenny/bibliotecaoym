@@ -29,7 +29,8 @@ class LibrosController < ApplicationController
          @libro = Libro.new(libro_params)
          cantidad = params[:cantidad] 
          check = "false"
-         check = params[:echeck].to_s.downcase     
+         check = params[:echeck].to_s.downcase   
+         puts "valorrrrrrrrrrrrrrrrrrrrr #{check}"  
             if check !='false' && check != ''   #VALIDAR SI ES FISICO
                @libro.fisico = true
             else

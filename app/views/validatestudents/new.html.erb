@@ -2,6 +2,12 @@
 	<div class="form-horizontal">
 
 			<h3>Validación estudiantil</h3>
+			 <% if $errormsg !=nil && $errormsg !=''  %>
+			    <div class="alert alert-danger" role="alert">
+			        <%= $errormsg %>
+			    </div>
+		 	<%end%>   
+			<% $errormsg =""%>
 			<div class="field">
 				<h4> ¿Es usted un estudiante? </h4>
 				<%= form_tag "/validatestudents", :action=> "create" do %>

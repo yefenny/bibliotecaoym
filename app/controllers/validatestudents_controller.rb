@@ -43,11 +43,11 @@ class ValidatestudentsController < ApplicationController
 		else	
 			if dtsocupados == 1
 				puts 'ocupado'
-				flash[:error] = "Ya existe un usuario con los datos de este estudiante !"
+				$errormsg = "Ya existe un usuario con los datos de este estudiante !"
 				redirect_to '/validatestudents/new'
 			else
 				puts 'nocoinciden'
-				flash[:error] = "Los datos no coinciden con el de ningún estudiante!"
+				$errormsg = "Los datos no coinciden con el de ningún estudiante!"
 				redirect_to '/validatestudents/new'
 			end	
 		end
