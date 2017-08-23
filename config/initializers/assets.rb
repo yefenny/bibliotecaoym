@@ -24,5 +24,6 @@ Rails.application.config.assets.precompile += %w( bootstrap.min.css )
 Rails.application.config.assets.precompile += %w( bootstrap-datepicker.js )
 Rails.application.config.assets.precompile += %w( navbarchild.css )
 Rails.application.config.assets.precompile += %w( calendar.gif )
+Rails.application.config.assets.precompile += %w( slide-1.jpg )
 
 
