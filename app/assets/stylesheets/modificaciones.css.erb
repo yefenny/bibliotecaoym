@@ -324,13 +324,13 @@ span.input-group-addon i {
   background-repeat: no-repeat;
 }
 .fade-carousel .slides .slide-1 {
-background: url('/assets/loader.gif') 
+background-image: url(<%= asset_path 'slide-1.png' %>);
 }
 .fade-carousel .slides .slide-2 {
-  background-image: url(/assets/slide-2.png);
+ background-image: url(<%= asset_path 'slide-2.png' %>);
 }
 .fade-carousel .slides .slide-3 {
-  background-image: url(<%= asset_path 'slide-2.png' %>);
+  background-image: url(<%= asset_path 'slide-3.png' %>);
 }
 
 /********************************/
