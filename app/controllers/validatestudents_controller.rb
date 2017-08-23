@@ -31,8 +31,10 @@ class ValidatestudentsController < ApplicationController
 		if studentidv != 0 && studentidv != nil
 			estudiante = Estudiante.where("id = #{studentidv}").first
 			estudiante.user_id = current_user.id
-			current_user.estudiante_id = estudiante.id
-			current_user.save
+			@usuario = User.where("id = #{current_user}").first
+			usuario.rol_id = 4
+			usuario.estudiante_id = estudiante.id
+			usuario.save
 			estudiante.save
 			redirect_to  root_path
 		else	
