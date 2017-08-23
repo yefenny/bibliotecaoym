@@ -324,7 +324,7 @@ span.input-group-addon i {
   background-repeat: no-repeat;
 }
 .fade-carousel .slides .slide-1 {
-background-image: url(/assets/slide-1.jpeg);"
+background: url('<%= asset_path 'loader.gif' %>') 
 }
 .fade-carousel .slides .slide-2 {
   background-image: url(/assets/slide-2.png);
