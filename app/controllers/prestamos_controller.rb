@@ -58,9 +58,9 @@ before_action :authenticate_user!
          @libro = Libro.where("id = #{libroid}").first
          @libro.cantidadlibro.cantidad =   @libro.cantidadlibro.cantidad - 1
          re = ActiveRecord::Base.connection.execute("INSERT INTO prestamos(
-             estudiante_id, libro_id, fechap, fechae, fechad, mora_id, 
+             estudiante_id, libro_id, fechap, fechae, mora_id, 
             created_by, created_at, updated_at)
-    VALUES (#{@prestamo.estudiante_id},#{libroid},'#{@prestamo.fechap}','#{@prestamo.fechae}',nil,4,'#{@prestamo.created_by}', current_TIMESTAMP, current_TIMESTAMP)")
+    VALUES (#{@prestamo.estudiante_id},#{libroid},'#{@prestamo.fechap}','#{@prestamo.fechae}',4,'#{@prestamo.created_by}', current_TIMESTAMP, current_TIMESTAMP)")
             @libro.save
             redirect_to :action => 'index'
          
