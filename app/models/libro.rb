@@ -2,7 +2,9 @@ class Libro < ApplicationRecord
 	has_one :cantidadlibro
 	has_many :prestamos
 	has_many :librodescargas
+	has_many :libroprestamo
 	has_many :descargas
+
 	belongs_to :asignatura
 	validates :title, presence: true
 	accepts_nested_attributes_for :cantidadlibro

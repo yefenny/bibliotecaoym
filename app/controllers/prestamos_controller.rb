@@ -61,6 +61,8 @@ before_action :authenticate_user!
              estudiante_id, libro_id, fechap, fechae, mora_id, 
             created_by, created_at, updated_at)
     VALUES (#{@prestamo.estudiante_id},#{libroid},'#{@prestamo.fechap}','#{@prestamo.fechae}',4,'#{@prestamo.created_by}', current_TIMESTAMP, current_TIMESTAMP)")
+         res = ActiveRecord::Base.connection.execute("INSERT INTO libroprestamos(libro_id, fecha_prestamo,created_at, 
+            updated_at) VALUES ('#{@libro.id}','#{Time.now}', current_TIMESTAMP,current_TIMESTAMP )")   
             @libro.save
             redirect_to :action => 'index'
          
