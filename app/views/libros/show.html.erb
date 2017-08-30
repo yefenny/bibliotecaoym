@@ -22,17 +22,18 @@
      <strong>Disponibilidad: </strong>
      <% if @libro.fisico == true && @libro.digital == true%>
      		Físico/ Digital<br/> 
-        <strong>Cantidad:</strong>
-        <%=@libro.cantidadlibro.cantidad%>
+
+        <strong>Cantidad disponible:</strong>
+        <%=@libro.cantidadlibro.cantidad%><br/>
      <%end%>
      <% if @libro.fisico == true && @libro.digital != true%>
-     		Físico</br> 
+     		Físico<br/> 
      <%end%>
      <% if @libro.fisico != true && @libro.digital != true%>
-     		No disponible</br> 
+     		No disponible<br/> 
      <%end%>
      <% if @libro.fisico != true && @libro.digital == true%>
-     		Digital</br> 
+     		Digital<br/> 
      <%end%>
      
   <% if @libro.description != nil && @libro.description != ''%>     
