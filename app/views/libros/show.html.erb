@@ -21,7 +21,8 @@
    <strong>Area de conocimiento: </strong> <%= @libro.nombre_area %><br />
      <strong>Disponibilidad: </strong>
      <% if @libro.fisico == true && @libro.digital == true%>
-     		Físico/ Digital</br> 
+     		Físico/ Digital<br/> 
+        <strong>Cantidad:</strong>@libro.cantidadlibro.cantidad
      <%end%>
      <% if @libro.fisico == true && @libro.digital != true%>
      		Físico</br> 

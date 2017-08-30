@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'rename'
 gem 'momentjs-rails'
 gem "twitter-bootstrap-rails"
 gem 'jquery-ui-rails'
