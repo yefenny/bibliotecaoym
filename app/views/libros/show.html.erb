@@ -22,9 +22,10 @@
      <strong>Disponibilidad: </strong>
      <% if @libro.fisico == true && @libro.digital == true%>
      		Físico/ Digital<br/> 
-
-        <strong>Cantidad disponible:</strong>
-        <%=@libro.cantidadlibro.cantidad%><br/>
+        <% if current_user.rol_id ==1 || current_user.rol_id ==2 || current_user.rol_id ==3 %>
+            <strong>Cantidad disponible:</strong>
+            <%=@libro.cantidadlibro.cantidad%><br/>
+        <%end%>    
      <%end%>
      <% if @libro.fisico == true && @libro.digital != true%>
      		Físico<br/> 
@@ -34,6 +35,10 @@
      <%end%>
      <% if @libro.fisico != true && @libro.digital == true%>
      		Digital<br/> 
+        <% if current_user.rol_id ==1 || current_user.rol_id ==2 || current_user.rol_id ==3 %>
+            <strong>Cantidad disponible:</strong>
+            <%=@libro.cantidadlibro.cantidad%><br/>
+        <%end%>  
      <%end%>
      
   <% if @libro.description != nil && @libro.description != ''%>     
@@ -46,5 +51,5 @@
 <hr />
 </div>
 
-<%= link_to 'Atras', {:action => 'index'} %>
+<%= link_to 'Atrás', {:action => 'index'} %>
 </div>
