@@ -15,7 +15,6 @@ before_action :authenticate_user!
         @prestamo = Prestamo.find(params[:id])
         fechahoy =  Time.now.strftime("%Y-%m-%d")
         @dias = (@prestamo.fechae.to_s.gsub("-", "").to_i - fechahoy.gsub("-", "").to_i).to_i
-        puts "estos son los diaaaaaaaaas #{@dias} "
         if fechahoy.to_date > @prestamo.fechae.to_date
           @prestamo.mora_id = 5
         end  
