@@ -16,8 +16,8 @@ before_action :authenticate_user!
         fechahoy =  Time.now.strftime("%Y-%m-%d")
         @dias = (@prestamo.fechae.to_s.gsub("-", "").to_i - fechahoy.gsub("-", "").to_i).to_i
         puts "estos son los diaaaaaaaaas #{@dias} "
-        if @dias > 7
-        @prestamo.mora_id = 2 
+        if fechahoy > @prestamo.fechae 
+          @prestamo.mora_id = 2 
         end  
           respond_to do |format|
             format.html
