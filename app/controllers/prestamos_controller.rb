@@ -17,7 +17,7 @@ before_action :authenticate_user!
         @dias = (@prestamo.fechae.to_s.gsub("-", "").to_i - fechahoy.gsub("-", "").to_i).to_i
         puts "estos son los diaaaaaaaaas #{@dias} "
         if fechahoy.to_date > @prestamo.fechae.to_date
-          @prestamo.mora_id = 2 
+          @dias = '14'
         end  
           respond_to do |format|
             format.html
